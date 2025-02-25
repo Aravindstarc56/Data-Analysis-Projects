@@ -1,0 +1,19 @@
+#1 SALES ANALYSIS
+pip install pandas matplotlib seaborn
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+df = pd.read_csv("/content/archive (5).zip") #loading dataset
+df.head() #display only few rows
+df.isnull().sum() #check for missing values
+df['Date'] = pd.to_datetime(df['Date']) #convert to datatime
+daily_sales = df.groupby('Date')['Total'].sum()
+plt.figure(figsize=(13,7))
+plt.plot(daily_sales,marker='o',linestyle='-')
+plt.title('Daily Sales Data')
+plt.xlabel('Date')
+plt.ylabel('Total Sales')
+plt.xticks(rotation=45)
+plt.show()
+
